@@ -1,19 +1,17 @@
 <template>
   <div>
+
     <section>
-      <div class="user-container">
-        <div>
-          <i class="fas fa-user"></i>
-        </div>
-        <div class="user-description">
+      <user-profile :info="itemDetail">
+        <template v-slot:username>
           <router-link :to="`/user/${itemDetail.user}`">
-          {{itemDetail.user}}
+            {{itemDetail.user}}
           </router-link>
-          <div class="time">
-            {{itemDetail.time_ago}}
-          </div>
-        </div>
-      </div>
+        </template>
+        <template v-slot:time>{{itemDetail.time_ago}}</template>
+      </user-profile>
+    </section>
+    <section>
       <h2>{{itemDetail.title}}</h2>
     </section>
     <section>
@@ -24,9 +22,10 @@
 
 <script>
 import { mapGetters } from "vuex";
-
+import UserProfile from "@/components/UserProfile";
 export default {
   name: "ItemView",
+  components: {UserProfile},
   computed: {
     ...mapGetters(['itemDetail'])
   },
@@ -38,19 +37,5 @@ export default {
 </script>
 
 <style scoped>
-.user-container {
-  display: flex;
-  align-items: center;
-  padding: 0.5rem;
-}
-.fa-user {
-  font-size: 2.0rem;
 
-}
-.user-description {
-  padding-left: 8px;
-}
-.time {
-  font-size: 0.7rem;
-}
 </style>

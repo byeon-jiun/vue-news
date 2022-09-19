@@ -1,16 +1,33 @@
 <template>
   <div>
-    <p>name : {{ userInfo.id }}</p>
-    <p>karma : {{ userInfo.karma }}</p>
-    <p>created : {{ userInfo.created }}</p>
+    <user-profile :info="userInfo">
+      <template v-slot:username>
+        <div>
+        {{userInfo.id}}
+        </div>
+      </template>
+      <template v-slot:time>
+        <span>
+        {{  userInfo.created}},
+        </span>
+      </template>
+      <template v-slot:karma>
+        <span>
+          {{userInfo.karma}}
+        </span>
+      </template>
+    </user-profile>
   </div>
 </template>
 
 <script>
+import UserProfile from "@/components/UserProfile";
 import {mapGetters} from "vuex";
-
 export default {
   name: "UserView",
+  components: {
+    UserProfile
+  },
   computed: {
     ...mapGetters(['userInfo'])
   },
