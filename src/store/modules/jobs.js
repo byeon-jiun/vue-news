@@ -19,7 +19,10 @@ const mutations = {
 const actions = {
     FETCH_JOBS({commit}) {
         fetchJobsList()
-            .then(({data}) => commit('SET_JOBS', data))
+            .then(({data}) => {
+                commit('SET_JOBS', data)
+                return data
+            })
             .catch(err => console.log(err))
     }
 }

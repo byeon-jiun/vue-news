@@ -19,7 +19,10 @@ const mutations = {
 const actions = {
     FETCH_USER_INFO({commit}, name) {
         fetchUserInfo(name)
-            .then(({data}) => commit('SET_USER_INFO', data))
+            .then(({data}) => {
+                commit('SET_USER_INFO', data)
+                return data
+            })
             .catch(err => console.log(err))
     }
 }

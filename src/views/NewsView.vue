@@ -5,15 +5,13 @@
 </template>
 
 <script>
-import ListItem from '../components/ListItem'
+import ListItem from "@/components/ListItem";
+import ListMixin from "@/mixins/ListMixin";
 export default {
   name: "NewsView",
-  components: {
-    ListItem
-  },
-  created() {
-    this.$store.dispatch('FETCH_NEWS')
-  }
+  components: {ListItem},
+  mixins:[ListMixin]
+
 }
 </script>
 

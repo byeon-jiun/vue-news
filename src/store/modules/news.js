@@ -17,9 +17,12 @@ const mutations = {
 }
 
 const actions = {
-    FETCH_NEWS({commit}) {
-        fetchNewsList()
-            .then(({data}) => commit('SET_NEWS', data))
+     FETCH_NEWS({commit}) {
+         fetchNewsList()
+            .then(({data}) => {
+                commit('SET_NEWS', data)
+                return data
+            })
             .catch(err => console.log(err))
     }
 }

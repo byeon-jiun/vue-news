@@ -31,7 +31,16 @@ export default {
   },
   created() {
     const id = this.$route.params.id;
-    this.$store.dispatch('FETCH_ITEM_DETAIL', id)
+    this.emitter.emit('start:spinner')
+    setTimeout(() => {
+      this.$store.dispatch('FETCH_ITEM_DETAIL', id)
+          .then(() => {
+            this.emitter.emit('end:spinner')
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+    }, 2000);
   }
 }
 </script>

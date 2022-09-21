@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul class="new-list">
-      <li v-for="item in listItems[$route.name]" :key="item.id" class="post">
+      <li v-for="item in AllList" :key="item.id" class="post">
         <div class="points">
           {{ item.points || 0 }}
         </div>
@@ -32,22 +32,12 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex";
 
 export default {
   name: "ListItem",
   computed: {
-    listItems () {
-      let list;
-      const name = this.$route.name;
-      if (name === 'news') {
-        list = this.$store.state.news
-      } else if (name === 'ask') {
-        list = this.$store.state.ask
-      } else if (name === 'jobs') {
-        list = this.$store.state.jobs
-      }
-      return  list
-    }
+    ...mapGetters(['AllList'])
   }
 }
 </script>

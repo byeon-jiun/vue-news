@@ -33,7 +33,16 @@ export default {
   },
   created() {
     const userName = this.$route.params.id;
-    this.$store.dispatch('FETCH_USER_INFO', userName)
+    this.emitter.emit('start:spinner')
+    setTimeout(() => {
+      this.$store.dispatch('FETCH_USER_INFO', userName)
+          .then(() => {
+            this.emitter.emit('end:spinner')
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+    }, 2000);
   }
 }
 </script>
