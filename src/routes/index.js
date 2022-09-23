@@ -19,19 +19,55 @@ const routes = [
         path: '/news',
         name: 'news',
         /*component: createListView('NewsView')*/
-        component: NewsView
+        component: NewsView,
+        beforeEnter: (to, from, next) => {
+            console.log(to, from, next)
+            emitter.emit('start:spinner')
+            store.dispatch('FETCH_All_LIST', to.name)
+                .then(() => {
+                    emitter.emit('end:spinner')
+                    next();
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+        }
     },
     {
         path: '/ask',
         name: 'ask',
-        component: AskView
+        component: AskView,
         /*component: createListView('AskView')*/
+        beforeEnter: (to, from, next) => {
+            console.log(to, from, next)
+            emitter.emit('start:spinner')
+            store.dispatch('FETCH_All_LIST', to.name)
+                .then(() => {
+                    emitter.emit('end:spinner')
+                    next();
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+        }
     },
     {
         path: '/jobs',
         name: 'jobs',
         /*component: createListView('JobsView')*/
-        component: JobsView
+        component: JobsView,
+        beforeEnter: (to, from, next) => {
+            console.log(to, from, next)
+            emitter.emit('start:spinner')
+            store.dispatch('FETCH_All_LIST', to.name)
+                .then(() => {
+                    emitter.emit('end:spinner')
+                    next();
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+        }
     },
     {
         path: '/item',
@@ -50,19 +86,6 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
     routes
-})
-
-router.beforeEach((to, from, next) => {
-    console.log(to, from, next)
-    emitter.emit('start:spinner')
-    store.dispatch('FETCH_All_LIST', to.name)
-        .then(() => {
-            emitter.emit('end:spinner')
-            next();
-        })
-        .catch((err) => {
-            console.log(err);
-        })
 })
 
 export default router
