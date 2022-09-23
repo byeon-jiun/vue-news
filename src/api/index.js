@@ -4,28 +4,56 @@ const config = {
     baseUrl: 'https://api.hnpwa.com/v0/'
 }
 
-function fetchNewsList() {
-    return axios.get(`${config.baseUrl}news/1.json`);
+async function fetchNewsList() {
+    try {
+        return await axios.get(`${config.baseUrl}news/1.json`);
+    } catch (err) {
+        console.log(err)
+    }
 }
 
-function fetchAskList() {
-    return axios.get(`${config.baseUrl}ask/1.json`);
+async function fetchAskList() {
+    try {
+        return await axios.get(`${config.baseUrl}ask/1.json`);
+    } catch (err) {
+        console.log(err)
+    }
 }
 
-function fetchJobsList() {
-    return axios.get(`${config.baseUrl}jobs/1.json`);
+async function fetchJobsList() {
+    try {
+        return await axios.get(`${config.baseUrl}jobs/1.json`);
+    } catch (err) {
+        console.log(err)
+    }
+
 }
 
-function fetchUserInfo(username) {
-    return axios.get(`${config.baseUrl}user/${username}.json`);
+async function fetchUserInfo(username) {
+    try {
+        return await axios.get(`${config.baseUrl}user/${username}.json`);
+    } catch (err) {
+        console.log(err)
+    }
+
 }
 
-function fetchItemDetail(itemid) {
-    return axios.get(`${config.baseUrl}item/${itemid}.json`);
+async function fetchItemDetail(itemid) {
+    try {
+        return await axios.get(`${config.baseUrl}item/${itemid}.json`);
+    } catch (err) {
+        console.log(err)
+    }
+
 }
 
-function fetchAllList(pageName) {
-    return axios.get(`${config.baseUrl}${pageName}/1.json`);
+async function fetchAllList(pageName) {
+    try {
+        return await axios.get(`${config.baseUrl}${pageName}/1.json`);
+    } catch (err) {
+        console.log(err)
+    }
+
 }
 export {
     fetchNewsList, fetchAskList, fetchJobsList, fetchUserInfo, fetchItemDetail, fetchAllList

@@ -18,12 +18,9 @@ const mutations = {
 
 const actions = {
      async FETCH_All_LIST({commit}, pageName) {
-           await fetchAllList(pageName)
-                .then(({data}) => {
-                    commit('SET_LIST', data)
-                    return data
-                })
-                .catch(err => console.log(err))
+           const response = await fetchAllList(pageName);
+           commit('SET_LIST', response.data);
+           return response
         }
 }
 export default {

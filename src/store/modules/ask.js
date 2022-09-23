@@ -17,13 +17,10 @@ const mutations = {
 }
 
 const actions = {
-    FETCH_ASK({commit}) {
-        fetchAskList()
-            .then(({data}) => {
-                commit('SET_ASK', data)
-                return data;
-            })
-            .catch(err => console.log(err))
+    async FETCH_ASK({commit}) {
+        const response = await fetchAskList();
+        commit('SET_ASK', response.data);
+        return response
     }
 }
 export default {
