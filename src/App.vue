@@ -28,6 +28,7 @@ export default {
     }
   },
   created() {
+    console.log(process.env.VUE_APP_TITLE)
     this.emitter.on('start:spinner', this.startSpinner);
     this.emitter.on('end:spinner', this.endSpinner);
   },
