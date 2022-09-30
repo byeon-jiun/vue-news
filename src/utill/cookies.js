@@ -5,7 +5,6 @@ function saveAuthToCookie(value) {
 function saveUserToCookie(value) {
     document.cookie = `user=${value}`
 }
-
 function getAuthFromCookie() {
     return document.cookie.replace(
         /(?:(?:^|.*;\s*)auth\s*=\s*([^;]*).*$)|^.*$/,
@@ -20,4 +19,4 @@ function getUserFromCookie() {
     );
 }
 
-export {saveAuthToCookie, saveUserToCookie, getUserFromCookie, getAuthFromCookie}
+export {saveAuthToCookie, saveUserToCookie, getUserFromCookie, getAuthFromCookie }

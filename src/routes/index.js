@@ -18,8 +18,9 @@ const routes = [
     {
         path: '/news',
         name: 'news',
-        /*component: createListView('NewsView')*/
-        component: NewsView,
+        /*component: createListView('NewsView'), webpackPrefetch: true*/
+        /*component: NewsView,*/
+        component: () => import(/* webpackChunkName: "news", webpackPrefetch: true */ NewsView),
         beforeEnter: (to, from, next) => {
             console.log(to, from, next)
             emitter.emit('start:spinner')
@@ -87,7 +88,5 @@ const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
     routes
 })
-/*router.beforeEach((to, from, next) => {
 
-})*/
 export default router

@@ -18,9 +18,9 @@ const mutations = {
 
 const actions = {
     async FETCH_NEWS({commit}) {
-         const response = await fetchNewsList();
-         commit('SET_NEWS', response.data);
-         return response
+        const response = await fetchNewsList()
+        commit('SET_NEWS', response.data);
+        return response
     }
 }
 export default {

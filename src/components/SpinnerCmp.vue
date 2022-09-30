@@ -10,13 +10,14 @@
 </template>
 
 <script>
+
 export default {
   name: "SpinnerCmp",
   props: {
     loading: {
     type: Boolean,
     required: true,
-    }
+    },
   }
 }
 </script>

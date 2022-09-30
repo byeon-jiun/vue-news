@@ -10,7 +10,7 @@ import ListMixin from "@/mixins/ListMixin";
 export default {
   name: "AskView",
   components: {ListItem},
-  mixins: [ListMixin]
+  mixins: [ListMixin],
 }
 </script>
 
